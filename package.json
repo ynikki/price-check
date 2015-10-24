@@ -1,0 +1,23 @@
+{
+  "name": "price-check",
+  "version": "1.0.0",
+  "description": "Caclulates the price of an Uber ride",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "uber",
+    "express",
+    "javascript"
+  ],
+  "author": "Dev League",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "oauth": "^0.9.14",
+    "request": "^2.65.0"
+  }
+}
