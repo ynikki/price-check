@@ -1,3 +1,4 @@
+
 /**
  * Sends a request to the server to get Uber products based on passed in
  * latitude and longitude positions.
@@ -5,16 +6,46 @@
  * @param  {number} lng The location's longitude value
  * @return {[Products]]} The Uber products available at the queried location
  */
-getProductsByLocation(21.3069, -157.8583);
-
-
 function getProductsByLocation (lat, lng) {
   var location = {
     latitude: lat,
-    longitude: lng,
+    longitude: lng
   };
   var products = getProducts(location);
   return products;
+}
+
+var productPrices = getProductsByLocation(21.3069,-157.8583);
+console.log(productPrices);
+console.log(productPrices.responseJSON);
+
+var content = productPrices.responseJSON.products;
+for(var i=0; i<content.length; i++){
+  console.log(content[i]);
+  console.log(content[i].display_name);
+  console.log(content[i].description);
+  console.log(content[i].capacity);
+
+  var headerElement=document.createElement('h2');
+  headerElement.className='headerTwo';
+  document.body.appendChild(headerElement);
+
+  var displayNameElement=document.createElement('div');
+  displayNameElement.className='displayName';
+  displayNameElement.innerHTML=content[i].display_name;
+  headerElement.appendChild(displayNameElement);
+
+  var paragraphElement=document.createElement('p');
+  paragraphElement.className='paragraph';
+  paragraphElement.innerHTML=content[i].description;
+  document.body.appendChild(paragraphElement);
+  headerElement.appendChild(paragraphElement);
+
+  var capacityElement=document.createElement('div');
+  capacityElement.className='image';
+  capacityElement.innerHTML=content[i].capacity;
+  headerElement.appendChild(capacityElement);
+
 }
 
 /**
@@ -26,7 +57,7 @@ function getProducts (location) {
   return $.ajax({
     type: "GET",
     data: location,
-    url: '/products',
+    url: '/prices',
     async: false
   });
 }
