@@ -11,7 +11,7 @@ app.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get('/products', function (request, response) {
+app.get('/prices', function (request, response) {
 
   var lat = request.query.latitude;
   var lng = request.query.longitude;
